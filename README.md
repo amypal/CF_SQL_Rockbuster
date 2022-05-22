@@ -1,2 +1,6 @@
-# CF_SQL_Rockbuster
-Answering business questions to inform company strategy for new online video service for Rockbuster Stealth LLC
+# CF_Rockbuster_movie_rental_BI
+## Business Inteligence for Rockbuster Stealth LLC, a film rental company; providing insights to help with the launch strategy for a new online film rental service
+### Answering business questions using SQL
+- JOIN
+- Subqueries
+- CTE
