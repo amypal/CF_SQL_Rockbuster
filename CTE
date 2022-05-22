@@ -1,0 +1,31 @@
+Find the average amount paid by the top 5 customers using a Common Table Expression
+
+WITH avg_amount_paid (customer_id,
+                      first_name,
+                      last name,
+                      city,
+                      country,
+                      total_amount_paid) AS
+  (SELECT A.customer_id,
+          B.first_name AS customer_first_name,
+          B.last name AS customer_last_name,
+          D.city,
+          E.country,
+          SUM(amount) AS total_amount_paid
+  FROM payment A
+  INNER JOIN customer B ON A.customer_id = B.customer_id
+  INNER JOIN address C ON B.address_id = C.address_id
+  INNER JOIN city D ON C.city_id = D.city_id
+  INNER JOIN country E ON D.country_id = E.country_id
+  WHERE E. country IN ('India', 'China', 'United States', 'Japan', 'Mexico', 'Brazil', 'Russian Federation', 'Philippines', 'Turkey', 'Indonesia')
+        AND D.city IN ('Aurora', 'Atlixco', 'Xintai', 'Adoni', 'Duhle (Dhulia) ', 'Kurashiki', 'Pingxiang', 'Sivas', 'Celaya', 'So Leopoldo')
+  GROUP BY  (A.customer_id),
+                (B.first_name),
+                (B.last_ name),
+                (D.city),
+                (E.country)
+  ORDER BY total_amount_paid DESC
+  LIMIT 5
+  )
+SELECT AVG (total_amount_paid) AS avg_amount _paid
+FROM avg_amount_paid
